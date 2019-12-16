@@ -42,7 +42,27 @@ public class TankFrame extends Frame {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println("key pressed");
-			x += 100;
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				x -= 10;
+				break;
+			
+			case KeyEvent.VK_RIGHT:
+				x += 10;
+				break;
+				
+			case KeyEvent.VK_UP:
+				y -= 10;
+				break;
+				
+			case KeyEvent.VK_DOWN:
+				y += 10;
+				break;
+				
+			default:
+				break;
+			}
 		}
 
 		@Override
