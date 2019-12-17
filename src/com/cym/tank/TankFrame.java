@@ -11,6 +11,11 @@ public class TankFrame extends Frame {
 	
 	int x = 200,y = 200;
 	
+	boolean BL = false;
+	boolean BR = false;
+	boolean BU = false;
+	boolean BD = false;
+	
 	public TankFrame() {
 		
 		setSize(800,600);
@@ -26,7 +31,9 @@ public class TankFrame extends Frame {
 			}
 		});
 		
-		this.addKeyListener(new MyKeylistener());
+		addKeyListener(new MyKeylistener());
+		
+		addMouseListener(null);
 	}
 	
 	@Override 
@@ -45,19 +52,23 @@ public class TankFrame extends Frame {
 			int key = e.getKeyCode();
 			switch (key) {
 			case KeyEvent.VK_LEFT:
-				x -= 10;
+				//x -= 10;
+				BL = true;
 				break;
 			
 			case KeyEvent.VK_RIGHT:
-				x += 10;
+				//x += 10;
+				BR = true;
 				break;
 				
 			case KeyEvent.VK_UP:
-				y -= 10;
+				//y -= 10;
+				BU = true;
 				break;
 				
 			case KeyEvent.VK_DOWN:
-				y += 10;
+				//y += 10;
+				BD = true;
 				break;
 				
 			default:
@@ -68,7 +79,34 @@ public class TankFrame extends Frame {
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println("key released");
+			int key = e.getKeyCode();
+			switch (key) {
+			case KeyEvent.VK_LEFT:
+				//x -= 10;
+				BL = false;
+				break;
+			
+			case KeyEvent.VK_RIGHT:
+				//x += 10;
+				BR = false;
+				break;
+				
+			case KeyEvent.VK_UP:
+				//y -= 10;
+				BU = false;
+				break;
+				
+			case KeyEvent.VK_DOWN:
+				//y += 10;
+				BD = false;
+				break;
+				
+			default:
+				break;
+			}
 		}
+		
+		//if(BL) x -= 10;
 	}
 	
 	
