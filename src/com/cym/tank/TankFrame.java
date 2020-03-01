@@ -17,12 +17,10 @@ public class TankFrame extends Frame {
 	boolean BD = false;
 	
 	public TankFrame() {
-		
 		setSize(800,600);
 		setResizable(false);
 		setTitle("tank war");
 		setVisible(true);
-		
 		addWindowListener(new WindowAdapter() {
 			
 			@Override
