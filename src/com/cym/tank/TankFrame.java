@@ -9,104 +9,89 @@ import java.awt.event.WindowEvent;
 
 public class TankFrame extends Frame {
 	
-	int x = 200,y = 200;
-	
-	boolean BL = false;
-	boolean BR = false;
-	boolean BU = false;
-	boolean BD = false;
-	
+	Tank myTank = new Tank(200,200,Dir.DOWN);
+
 	public TankFrame() {
-		setSize(800,600);
-		setResizable(false);
-		setTitle("tank war");
-		setVisible(true);
-		addWindowListener(new WindowAdapter() {
-			
+		setSize(800,600);			//设置尺寸
+		setResizable(false);		//不可调整
+		setTitle("tank war");		//设置标题
+		setVisible(true);			//可显示
+		addWindowListener(new WindowAdapter() {			//窗口监听//匿名内部类：只有这里有用
 			@Override
 			public void windowClosing(WindowEvent e) {
 				System.exit(0);
 			}
 		});
-		
 		addKeyListener(new MyKeylistener());
-		
 		addMouseListener(null);
 	}
 	
 	@Override 
 	public void paint(Graphics g) {		//图像重新绘制时系统自动调用
 		System.out.println("paint");
-		g.fillRect(x, y, 50, 50);
-		//x += 100;
-		//y += 100;
+		myTank.paint(g);
 	}
 	
-	class MyKeylistener extends KeyAdapter{
-
+	class MyKeylistener extends KeyAdapter{			//内部类
+		
+		boolean BL = false;
+		boolean BR = false;
+		boolean BU = false;
+		boolean BD = false;
+		
 		@Override
 		public void keyPressed(KeyEvent e) {
 			System.out.println("key pressed");
 			int key = e.getKeyCode();
 			switch (key) {
 			case KeyEvent.VK_LEFT:
-				//x -= 10;
 				BL = true;
 				break;
-			
 			case KeyEvent.VK_RIGHT:
-				//x += 10;
 				BR = true;
-				break;
-				
+				break;	
 			case KeyEvent.VK_UP:
-				//y -= 10;
 				BU = true;
 				break;
-				
 			case KeyEvent.VK_DOWN:
-				//y += 10;
 				BD = true;
-				break;
-				
+				break;	
 			default:
 				break;
 			}
+			setMainTankDir();
 		}
-
 		@Override
 		public void keyReleased(KeyEvent e) {
 			System.out.println("key released");
 			int key = e.getKeyCode();
 			switch (key) {
 			case KeyEvent.VK_LEFT:
-				//x -= 10;
 				BL = false;
 				break;
-			
 			case KeyEvent.VK_RIGHT:
-				//x += 10;
 				BR = false;
 				break;
-				
 			case KeyEvent.VK_UP:
-				//y -= 10;
 				BU = false;
 				break;
-				
 			case KeyEvent.VK_DOWN:
-				//y += 10;
 				BD = false;
 				break;
-				
 			default:
 				break;
 			}
+			
+			setMainTankDir();
 		}
 		
-		//if(BL) x -= 10;
+		private void setMainTankDir() {
+			if(BL) myTank.setDir(Dir.LEFT);
+			if(BR) myTank.setDir(Dir.RIGHT);
+			if(BU) myTank.setDir(Dir.UP);
+			if(BD) myTank.setDir(Dir.DOWN);
+		}	
 	}
-	
 	
 	
 }
