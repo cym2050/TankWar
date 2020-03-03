@@ -10,7 +10,6 @@ import java.awt.event.WindowEvent;
 public class TankFrame extends Frame {
 	
 	Tank myTank = new Tank(200,200,Dir.DOWN);
-
 	public TankFrame() {
 		setSize(800,600);			//设置尺寸
 		setResizable(false);		//不可调整
@@ -86,6 +85,10 @@ public class TankFrame extends Frame {
 		}
 		
 		private void setMainTankDir() {
+			if(!BL && !BR && !BU && !BD) 
+				myTank.setMoving(false);
+			else 
+				myTank.setMoving(true);
 			if(BL) myTank.setDir(Dir.LEFT);
 			if(BR) myTank.setDir(Dir.RIGHT);
 			if(BU) myTank.setDir(Dir.UP);
