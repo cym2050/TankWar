@@ -1,5 +1,6 @@
 package com.cym.tank;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Tank {
@@ -32,8 +33,11 @@ public class Tank {
 
 	public void paint(Graphics g) {
 		// TODO Auto-generated method stub
+		Color c = g.getColor();
+		g.setColor(Color.yellow);
 		g.fillRect(x, y, 50, 50);	
 		move();
+		g.setColor(c);
 	}
 
 	private void move() {

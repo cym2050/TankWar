@@ -1,7 +1,9 @@
 package com.cym.tank;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -11,9 +13,10 @@ public class TankFrame extends Frame {
 	
 	Tank myTank = new Tank(200,200,Dir.DOWN);
 	Bullet bullet = new Bullet(200,200,Dir.DOWN);
+	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 	
 	public TankFrame() {
-		setSize(800,600);			//设置尺寸
+		setSize(GAME_WIDTH,GAME_HEIGHT);			//设置尺寸
 		setResizable(false);		//不可调整
 		setTitle("tank war");		//设置标题
 		setVisible(true);			//可显示
@@ -25,6 +28,21 @@ public class TankFrame extends Frame {
 		});
 		addKeyListener(new MyKeylistener());
 		addMouseListener(null);
+	}
+	
+	Image offScreenImage = null;
+	@Override
+	public void update(Graphics g) {		//双缓冲，解决闪烁问题，在paint之前调用
+		if(offScreenImage == null) {
+			offScreenImage = this.createImage(GAME_WIDTH, GAME_HEIGHT);
+		}
+		Graphics gOffScreen = offScreenImage.getGraphics();
+		Color c = gOffScreen.getColor();
+		gOffScreen.setColor(Color.BLACK);
+		gOffScreen.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+		gOffScreen.setColor(c);
+		paint(gOffScreen);
+		g.drawImage(offScreenImage, 0, 0, null);
 	}
 	
 	@Override 
