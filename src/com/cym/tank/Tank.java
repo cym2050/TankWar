@@ -43,7 +43,7 @@ public class Tank {
 		case RIGHT:	x += SPEED;break;
 		case UP:	y -= SPEED;break;
 		case DOWN:	y += SPEED;break;
-	}
+		}
 	}
 	
 

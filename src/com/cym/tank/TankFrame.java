@@ -10,6 +10,8 @@ import java.awt.event.WindowEvent;
 public class TankFrame extends Frame {
 	
 	Tank myTank = new Tank(200,200,Dir.DOWN);
+	Bullet bullet = new Bullet(200,200,Dir.DOWN);
+	
 	public TankFrame() {
 		setSize(800,600);			//设置尺寸
 		setResizable(false);		//不可调整
@@ -29,6 +31,7 @@ public class TankFrame extends Frame {
 	public void paint(Graphics g) {		//图像重新绘制时系统自动调用
 		System.out.println("paint");
 		myTank.paint(g);
+		bullet.paint(g); 
 	}
 	
 	class MyKeylistener extends KeyAdapter{			//内部类
