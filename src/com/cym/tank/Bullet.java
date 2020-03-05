@@ -2,6 +2,7 @@ package com.cym.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 	
 public class Bullet {
@@ -57,6 +58,22 @@ public class Bullet {
 		
 		if(x < 0 || y < 0 || x > TankFrame.GAME_WIDTH || y > TankFrame.GAME_HEIGHT)
 			live = false;	
+	}
+
+	public void collidWith(Tank tank) {
+		// TODO Auto-generated method stub
+		Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
+		Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
+		if(rect1.intersects(rect2)) {
+			tank.die();
+			this.die();
+			
+		}
+	}
+
+	private void die() {
+		// TODO Auto-generated method stub
+		this.live = false;
 	}
 	
 	
