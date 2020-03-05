@@ -14,14 +14,16 @@ public class Bullet {
 	private Dir dir;
 	private	boolean live = true;
 	private TankFrame tf = null;
+	private Group group = Group.BAD;
 	
 	
-	public Bullet(int x, int y, Dir dir, TankFrame tf) {
+	public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
 		super();
 		this.x = x;
 		this.y = y;
 		this.dir = dir;
 		this.tf = tf;
+		this.group = group;
 	}
 	
 	public void paint(Graphics g) {
@@ -62,6 +64,8 @@ public class Bullet {
 
 	public void collidWith(Tank tank) {
 		// TODO Auto-generated method stub
+		if(this.group == tank.getGroup())
+			return;
 		Rectangle rect1 = new Rectangle(this.x, this.y, WIDTH, HEIGHT);
 		Rectangle rect2 = new Rectangle(tank.getX(), tank.getY(), Tank.WIDTH, Tank.HEIGHT);
 		if(rect1.intersects(rect2)) {
