@@ -3,10 +3,12 @@ package com.cym.tank;
 import java.awt.Color;
 import java.awt.Graphics;
 
+	
 public class Bullet {
 	
 	private static final int SPEED = 10;
-	private static final int WIDTH = 25,LENGTH = 25;
+	static final int WIDTH = ResourceMgr.bulletD.getWidth();
+	static final int HEIGHT = ResourceMgr.bulletD.getHeight();
 	private int x, y;
 	private Dir dir;
 	private	boolean live = true;
@@ -39,7 +41,7 @@ public class Bullet {
 				break;
 			case DOWN :		
 				g.drawImage(ResourceMgr.bulletD, x, y, null);
-				break;
+				break; 
 		}
 		move();
 //		g.setColor(c);
