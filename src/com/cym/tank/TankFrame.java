@@ -8,11 +8,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200,200,Dir.DOWN);
-	Bullet bullet = new Bullet(200,200,Dir.DOWN);
+	Tank myTank = new Tank(200, 200, Dir.DOWN, this);
+	List<Bullet> bullets = new ArrayList<>();	
 	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 	
 	public TankFrame() {
@@ -48,8 +50,9 @@ public class TankFrame extends Frame {
 	@Override 
 	public void paint(Graphics g) {		//图像重新绘制时系统自动调用
 		System.out.println("paint");
-		myTank.paint(g);
-		bullet.paint(g); 
+		myTank.paint(g); 
+		for(Bullet b : bullets)
+			b.paint(g); 
 	}
 	
 	class MyKeylistener extends KeyAdapter{			//内部类
@@ -97,6 +100,9 @@ public class TankFrame extends Frame {
 				break;
 			case KeyEvent.VK_DOWN:
 				BD = false;
+				break;
+			case KeyEvent.VK_CONTROL:
+				myTank.fire();
 				break;
 			default:
 				break;
