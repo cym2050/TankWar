@@ -10,7 +10,8 @@ public class Bullet {
 	private int x, y;
 	private Dir dir;
 	private	boolean live = true;
-	private TankFrame tf;
+	private TankFrame tf = null;
+	
 	
 	public Bullet(int x, int y, Dir dir, TankFrame tf) {
 		super();
@@ -23,11 +24,25 @@ public class Bullet {
 	public void paint(Graphics g) {
 		if(!live)
 			tf.bullets.remove(this);
-		Color c = g.getColor();
-		g.setColor(Color.red);
-		g.fillOval(x, y, WIDTH, LENGTH);	
+//		Color c = g.getColor();
+//		g.setColor(Color.red);
+//		g.fillOval(x, y, WIDTH, LENGTH);	
+		switch(dir) {
+			case LEFT :		
+				g.drawImage(ResourceMgr.bulletL, x, y, null);
+				break;
+			case RIGHT :	
+				g.drawImage(ResourceMgr.bulletR, x, y, null);
+				break;
+			case UP :		
+				g.drawImage(ResourceMgr.bulletU, x, y, null);
+				break;
+			case DOWN :		
+				g.drawImage(ResourceMgr.bulletD, x, y, null);
+				break;
+		}
 		move();
-		g.setColor(c);
+//		g.setColor(c);
 	}
 	
 	private void move() {
