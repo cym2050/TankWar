@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Bullet {
 	
 	private static final int SPEED = 10;
-	private static final int WIDTH = 20,LENGTH = 20;
+	private static final int WIDTH = 25,LENGTH = 25;
 	private int x, y;
 	private Dir dir;
 	private	boolean live = true;
