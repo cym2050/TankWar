@@ -13,9 +13,10 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);
-	List<Bullet> bullets = new ArrayList<>();	
-	List<Tank> tanks = new ArrayList<>();
+	Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);	//主战坦克
+	List<Bullet> bullets = new ArrayList<>();						//子弹
+	List<Tank> tanks = new ArrayList<>();							//敌方坦克
+	Explode e = new Explode(100, 100, this);
 	
 	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
 	
@@ -65,6 +66,7 @@ public class TankFrame extends Frame {
 		for(int i=0;i<bullets.size();i++)
 			for(int j=0;j<tanks.size();j++)
 				bullets.get(i).collidWith(tanks.get(j));
+		e.paint(g);
 	}
 	
 	class MyKeylistener extends KeyAdapter{			//内部类
