@@ -57,6 +57,7 @@ public class TankFrame extends Frame {
 		g.setColor(Color.white);
 		g.drawString("子弹的数量:" + bullets.size(), 10, 60);
 		g.drawString("敌人的数量:" + tanks.size(), 10, 80);
+		g.drawString("爆炸的数量:" + explodes.size(), 10, 100);
 		g.setColor(c);
 		myTank.paint(g); 
 		for(int i = 0; i < bullets.size(); i++)
@@ -71,6 +72,7 @@ public class TankFrame extends Frame {
 
 		for(int i = 0; i < explodes.size(); i++)
 			explodes.get(i).paint(g);
+			
 	}
 	
 	class MyKeylistener extends KeyAdapter{			//内部类

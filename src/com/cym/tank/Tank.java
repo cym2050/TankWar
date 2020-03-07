@@ -11,7 +11,7 @@ public class Tank {
 	private boolean moving = true;
 	private boolean live = true;
 	private TankFrame tf;
-	private static final int SPEED = 1;
+	private static final int SPEED = 5;
 	private Random random = new Random();
 	private Group group = Group.BAD;
 	
