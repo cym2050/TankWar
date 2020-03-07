@@ -13,8 +13,17 @@ public class Explode {
 	static final int HEIGHT = ResourceMgr.explodes[0].getHeight();
 	private int x, y;
 	private Dir dir;
-	private	boolean live = true;
+	private	boolean live = false;
 	private TankFrame tf = null;
+
+	public boolean isLive() {
+		return live;
+	}
+
+	public void setLive(boolean live) {
+		this.live = live;
+	}
+
 	
 	private int step = 0;
 	
@@ -23,6 +32,8 @@ public class Explode {
 		this.x = x;
 		this.y = y;
 		this.tf = tf;
+		
+		//new Audio("audio/explode.wav").run();
 	}
 	
 	public void paint(Graphics g) {
