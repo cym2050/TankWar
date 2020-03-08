@@ -13,19 +13,19 @@ import java.util.List;
 
 public class TankFrame extends Frame {
 	
-	Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);	//主战坦克
-	List<Bullet> bullets = new ArrayList<>();						//子弹
-	List<Tank> tanks = new ArrayList<>();							//敌方坦克
-	List<Explode> explodes = new ArrayList<>();
-	//Explode e = new Explode(100, 100, this);
+	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;			//战场窗口尺寸
 	
-	static final int GAME_WIDTH = 800, GAME_HEIGHT = 600;
+	Tank myTank = new Tank(200, 200, Dir.DOWN, Group.GOOD, this);	//加入一个主战坦克对象
+	List<Bullet> bullets = new ArrayList<>();						//子弹容器
+	List<Tank> tanks = new ArrayList<>();							//敌方坦克容器
+	List<Explode> explodes = new ArrayList<>();						//爆炸效果容器
 	
-	public TankFrame() {
+	
+	public TankFrame() {							//窗口属性，窗口监听，键盘监听
 		setSize(GAME_WIDTH,GAME_HEIGHT);			//设置尺寸
 		setResizable(false);		//不可调整
 		setTitle("tank war");		//设置标题
-		setVisible(true);			//可显示
+		setVisible(true);			//显示界面
 		addWindowListener(new WindowAdapter() {			//窗口监听//匿名内部类：只有这里有用
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -75,7 +75,7 @@ public class TankFrame extends Frame {
 			
 	}
 	
-	class MyKeylistener extends KeyAdapter{			//内部类
+	class MyKeylistener extends KeyAdapter{			//
 		
 		boolean BL = false;
 		boolean BR = false;
