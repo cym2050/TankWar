@@ -106,8 +106,22 @@ public class Tank {
 		if(this.group == Group.BAD && random.nextInt(10) > 8) {		//随机方向
 			randomDir();
 		}
+		
+		boundCheck();
 	}
 	
+	private void boundCheck() {
+		// TODO Auto-generated method stub
+		if(this.x < 0) 
+			x = 0;
+		if(this.y < 30)
+			y = 30;
+		if(this.x > TankFrame.GAME_WIDTH - Tank.WIDTH)
+			x = TankFrame.GAME_WIDTH - Tank.WIDTH;
+		if(this.y > TankFrame.GAME_HEIGHT - Tank.HEIGHT)
+			y = TankFrame.GAME_HEIGHT - Tank.HEIGHT;
+	}
+
 	private void randomDir() {
 		// TODO Auto-generated method stub
 		this.dir = Dir.values()[random.nextInt(4)];
