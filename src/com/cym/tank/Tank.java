@@ -2,6 +2,7 @@ package com.cym.tank;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.Random;
 
 public class Tank {
@@ -17,6 +18,8 @@ public class Tank {
 	
 	static final int WIDTH = ResourceMgr.badTankL.getWidth();
 	static final int HEIGHT = ResourceMgr.badTankL.getHeight();
+	
+	Rectangle rect = new Rectangle();
 	
 	public int getX() {
 		return x;
@@ -65,6 +68,11 @@ public class Tank {
 		this.dir = dir;
 		this.tf = tf;
 		this.group = group;
+		
+		rect.x = x;
+		rect.y = y;
+		rect.width = this.WIDTH;
+		rect.height = this.HEIGHT;
 	}
 
 
@@ -108,6 +116,9 @@ public class Tank {
 		}
 		
 		boundCheck();
+		
+		rect.x = this.x;
+		rect.y = this.y;
 	}
 	
 	private void boundCheck() {
