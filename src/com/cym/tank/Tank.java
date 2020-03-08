@@ -70,6 +70,10 @@ public class Tank {
 
 
 	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+//		Color c = g.getColor();
+//		g.setColor(Color.yellow);
+//		g.fillRect(x, y, 50, 50);	
 		if(!live)
 			tf.tanks.remove(this);
 		switch(dir) {
@@ -87,6 +91,7 @@ public class Tank {
 				break;
 		}  
 		move();
+//		g.setColor(c);
 	}
 
 	private void move() {
@@ -98,20 +103,10 @@ public class Tank {
 		case DOWN:	y += SPEED;break;
 		}
 		
-		if(this.group == Group.BAD && random.nextInt(10) > 8) {		//随机发射
+		if(random.nextInt(10) > 8)
 			this.fire();
-		}
-		
-		if(this.group == Group.BAD && random.nextInt(10) > 8) {		//随机方向
-			randomDir();
-		}
 	}
 	
-	private void randomDir() {
-		// TODO Auto-generated method stub
-		this.dir = Dir.values()[random.nextInt(4)];
-	}
-
 	public void fire() {
 		int bX = this.x + this.WIDTH/2 - Bullet.WIDTH/2;
 		int bY = this.y + this.HEIGHT/2 - Bullet.HEIGHT/2;
