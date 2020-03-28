@@ -11,16 +11,26 @@ public class Tank {
 
 	private boolean moving = true;
 	private boolean live = true;
-	private TankFrame tf;
+	TankFrame tf;
 	private static final int SPEED = 10;
 	private Random random = new Random();
 	private Group group = Group.BAD;
+	
+	FireStrategy fS = new DefaultFireStrategy();
 	
 	static final int WIDTH = ResourceMgr.badTankL.getWidth();
 	static final int HEIGHT = ResourceMgr.badTankL.getHeight();
 	
 	Rectangle rect = new Rectangle();
 	
+	public int getWidth() {
+		return WIDTH;
+	}
+
+	public int getHeight() {
+		return HEIGHT;
+	}
+
 	public int getX() {
 		return x;
 	}
@@ -139,9 +149,7 @@ public class Tank {
 	}
 
 	public void fire() {
-		int bX = this.x + this.WIDTH/2 - Bullet.WIDTH/2;
-		int bY = this.y + this.HEIGHT/2 - Bullet.HEIGHT/2;
-		tf.bullets.add(new Bullet(bX, bY, this.dir, this.group, this.tf)); 
+		fS.fire(this);
 	}
 
 	public void die() {

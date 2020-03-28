@@ -18,7 +18,6 @@ public class Bullet {
 	
 	Rectangle rect = new Rectangle();
 	
-	
 	public Bullet(int x, int y, Dir dir, Group group, TankFrame tf) {
 		super();
 		this.x = x;
@@ -31,6 +30,8 @@ public class Bullet {
 		rect.y = y;
 		rect.width = this.WIDTH;
 		rect.height = this.HEIGHT;
+		
+		tf.bullets.add(this);
 	}
 	
 	public void paint(Graphics g) {
