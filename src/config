@@ -1,2 +1,9 @@
 #
-Initial=100
+Initial=10
+tankSpeed=10
+bulletSpeed=
+gameWeight=
+gameHeight=
+#FireStrategy
+goodTank=com.cym.tank.FourFireStrategy
+badTank=com.cym.tank.DefaultFireStrategy

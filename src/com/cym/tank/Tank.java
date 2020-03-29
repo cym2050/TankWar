@@ -12,11 +12,11 @@ public class Tank {
 	private boolean moving = true;
 	private boolean live = true;
 	TankFrame tf;
-	private static final int SPEED = 10;
+	private static final int SPEED = Integer.parseInt((String)PropertyMgr.get("tankSpeed"));
 	private Random random = new Random();
 	private Group group = Group.BAD;
 	
-	FireStrategy fS = new DefaultFireStrategy();
+	FireStrategy fS;
 	
 	static final int WIDTH = ResourceMgr.badTankL.getWidth();
 	static final int HEIGHT = ResourceMgr.badTankL.getHeight();
@@ -83,6 +83,24 @@ public class Tank {
 		rect.y = y;
 		rect.width = this.WIDTH;
 		rect.height = this.HEIGHT;
+		
+		if(group == Group.GOOD) {
+			String goodTank = (String)PropertyMgr.get("goodTank");
+			try {
+				fS = (FireStrategy)Class.forName(goodTank).newInstance();
+			} catch (InstantiationException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+		else
+			fS = new DefaultFireStrategy();
 	}
 
 
